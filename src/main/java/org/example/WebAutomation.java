@@ -245,7 +245,6 @@ public class WebAutomation {
         /*
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("MYT7E9D")));
-
          */
 
         Thread.sleep(5000);
