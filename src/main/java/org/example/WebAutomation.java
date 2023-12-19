@@ -30,9 +30,12 @@ public class WebAutomation {
         driver.manage().window().maximize();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("onetrust-close-btn-container")));
+        WebElement element = wait.until(ExpectedConditions
+                .presenceOfElementLocated(By.id("onetrust-close-btn-container")));
+        element.click();
+
         //close cookie popup
-        if(driver.findElement(By.id("onetrust-close-btn-container")).isDisplayed()){
+        if(element.isDisplayed()){
             driver.findElement(By.id("onetrust-close-btn-container")).click();
         }
 
