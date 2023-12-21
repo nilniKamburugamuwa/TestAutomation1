@@ -169,6 +169,10 @@ public class WebAutomation {
 
          */
 
+
+
+
+
         //manual login
         Thread.sleep(60000);
 
@@ -279,6 +283,7 @@ public class WebAutomation {
         driver.findElement(By.name("guest-dob")).sendKeys("03/11/1997");
         Select drpRegion = new Select(driver.findElement(By.name("region_id")));
         drpRegion.selectByVisibleText("Victoria");
+
         driver.findElement(By.name("city")).sendKeys("Kansas");
         driver.findElement(By.name("postcode_autocomplete")).sendKeys("2000");
 
