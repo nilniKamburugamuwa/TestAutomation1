@@ -10,12 +10,14 @@ import java.io.IOException;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
+import static io.restassured.matcher.RestAssuredMatchers.matchesXsdInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 
-public class SoapXmlRequest {
+
+public class XMLSchemaValidation {
 
     @Test
-    public void validateSoapXMP() throws IOException {
+    public void schemeValidation() throws IOException {
         File file = new File("./SoapRequest/text.xml");
         FileInputStream fileInputStream = new FileInputStream(file);
         String requestBody = IOUtils.toString(fileInputStream, "UTF-8");
@@ -24,7 +26,8 @@ public class SoapXmlRequest {
                 accept(ContentType.XML).
                 body(requestBody).
                 when().post("/calculator.asmx").
-                then().statusCode(200).log().all().
-                and().body("//*:AddResult.text()",equalTo("5"));
+                then().statusCode(500).log().all().
+                and().body("//*:AddResult.text()",equalTo("5")).
+                and().assertThat().body(matchesXsdInClasspath("Calculate.xsd"));
     }
 }
